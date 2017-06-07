@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#E53935</color>
+    <color name="colorPrimaryDark">#da0101</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="color_brown">#8E3C29</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_red">#FF0000</color>
+    <color name="color_gray_">#C1C8CD</color>
+    <color name="color_light_green">#E2EAF0</color>
+    <color name="color_dark_gray">#575757</color>
+    <color name="color_mos">#DEDEDE</color>\
+    <color name="color_red_mos">#D63813</color>
+    <color name="color_background">#F7F7F7</color>
+    <color name="color_gray_blue">#FAFFFF</color>
+    <color name="color_orange">#FF9B43</color>
+    <color name="color_white_mos">#F4F4F4</color>
+    <color name="color_gray_light">#F5F5F5</color>
+    <color name="color_white_light">#EEEEEE</color>
+    <color name="color_gray_mos">#DFDFDF</color>
+    <color name="color_green_600">#43A047</color>
+    <color name="color_grey_900">#212121</color>
+    <color name="color_grey_700">#616161</color>
+    <color name="color_grey_757575">#757575</color>
+    <color name="color_grey_100">#F5F5F5</color>
+    <color name="color_blue_grey_50">#ECEFF1</color>
+    <color name="color_red_500">#E74C3C</color>
+    <color name="color_blue_600">#3498DB</color>
+    <color name="color_green">#13ef08</color>
+    <color name="color_teal_700">#1ABB9C</color>
+    <color name="color_orange_800">#f9a825</color>
+    <color name="color_teal_500">#009688</color>
+
+    <color name="color_seashell">#F1F1F1</color>
+    <color name="color_blued">#1976D2</color>
+    <color name="color_black_transprarent">#B2000000</color>
+    <color name="color_brown_100">#cecaca</color>
+    <color name="color_deep_oragen_600">#F4511E</color>
+    <color name="color_red_aceent_700">#d50000</color>
+    <color name="color_light_blue_800">#0277BD</color>
+    <color name="color_blue_207">#94d1cf</color>
 </resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.listdevice.ListDeviceViewModel"
+            />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/searchview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@null"
+            android:visibility="gone"
+            app:model="@{viewModel}"
+            />
+
+        <LinearLayout
+
+            android:id="@id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searchview"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_5"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="@drawable/bg_filter_shape"
+                android:drawableLeft="@drawable/ic_arrow_drop_down_white_24px"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:onClick="@{()-> viewModel.onChooseStatus()}"
+                android:text="@={viewModel.status.name}"
+                android:textSize="@dimen/sp_13"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_weight="1"
+                android:background="@drawable/bg_filter_shape"
+                android:drawableLeft="@drawable/ic_arrow_drop_down_white_24px"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:onClick="@{()-> viewModel.onChooseCategory()}"
+                android:text="@={viewModel.category.name}"
+                android:textSize="@dimen/sp_13"
+                />
+
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linear_layout"
+            android:scrollbars="vertical"
+            app:layoutManager="LinearLayoutManager"
+            app:recyclerAdapter="@{viewModel.adapter}"
+            app:scrollListenner="@{viewModel.scrollListenner}"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/float_action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/dp_16"
+            android:visibility="@{viewModel.bo ? View.VISIBLE : View.GONE}"
+            app:backgroundTint="@color/colorPrimary"
+            app:fab_addButtonColorNormal="@color/colorPrimary"
+            app:fab_addButtonColorPressed="@color/color_grey_757575"
+            app:fab_addButtonPlusIconColor="@color/color_white"
+            app:fab_labelStyle="@style/FloatMenuTitleStyle"
+            >
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onStartReturnDevice(floatActionMenu)}"
+                app:fab_colorNormal="@android:color/white"
+                app:fab_colorPressed="@color/color_seashell"
+                app:fab_icon="@drawable/ic_return_teal_24px"
+                app:fab_size="mini"
+                app:fab_title="@string/action_return_device"
+                />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onRegisterDeviceClick(floatActionMenu)}"
+                app:fab_colorNormal="@android:color/white"
+                app:fab_colorPressed="@color/color_seashell"
+                app:fab_icon="@drawable/ic_add_teal_24dp"
+                app:fab_size="mini"
+                app:fab_title="@string/action_add_new_device"
+                />
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        <ProgressBar
+            android:id="@+id/progress_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="@{viewModel.progressBarVisibility}"
+            />
+
+        <ProgressBar
+            android:id="@+id/progress_loading_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="@{viewModel.isLoadingMore ? View.VISIBLE : View.GONE}"
+            />
+
+    </RelativeLayout>
+</layout>

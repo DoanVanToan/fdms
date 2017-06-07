@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.framgia.fdms.screen.dashboard.dashboarddetail.DashBoardDetailFragment"/>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.dashboard.dashboarddetail.DashBoardDetailViewModel"
+            />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_250"
+                >
+                <com.github.mikephil.charting.charts.PieChart
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    bind:description="@{viewModel.dashboardTitle}"
+                    bind:pieData="@{viewModel.pieData}"
+                    bind:totalValue="@{viewModel.total}"
+                    />
+
+                <include
+                    layout="@layout/empty_state"
+                    bind:text="@{@string/missing_data}"
+                    bind:image="@{@drawable/ic_no_report}"
+                    bind:visibleState="@{viewModel.emptyViewVisible}"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_green_600"
+                android:paddingBottom="@dimen/dp_3"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_3"
+                android:text="@{viewModel.dashboardTitle}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="italic"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                bind:layoutManager="LinearLayoutManager"
+                bind:recyclerAdapter="@{viewModel.dashboardType == DashBoardDetailFragment.REQUEST_DASHBOARD ? viewModel.adapterTopRequest : viewModel.adapterTopDevice}"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

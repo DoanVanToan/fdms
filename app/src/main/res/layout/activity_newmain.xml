@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="com.framgia.fdms.screen.main.MainViewModel.Tab"/>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.main.MainViewModel"
+            />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <com.framgia.fdms.widget.UnSwipeViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                bind:adapter="@{viewModel.pagerAdapter}"
+                bind:model="@{viewModel}"
+                />
+            <LinearLayout
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:background="@drawable/bg_layer_list"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:id="@+id/image_dash_board"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onDirectChildTab(Tab.TAB_DASH_BOARD ,viewpager)}"
+                    android:padding="@dimen/dp_15"
+                    android:src="@drawable/ic_home_black_24dp"
+                    bind:tabPostion="@{viewModel.tab}"
+                    />
+
+                <ImageView
+                    android:id="@+id/image_request_manager"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onDirectChildTab(Tab.TAB_REQUEST_MANAGER ,viewpager)}"
+                    android:padding="@dimen/dp_15"
+                    android:src="@drawable/ic_request_manager"
+                    bind:tabPostion="@{viewModel.tab}"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    />
+
+                <ImageView
+                    android:id="@+id/image_device_manager"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onDirectChildTab(Tab.TAB_DEVICE_MANAGER ,viewpager)}"
+                    android:padding="@dimen/dp_15"
+                    android:src="@drawable/ic_device_manager"
+                    bind:tabPostion="@{viewModel.tab}"
+                    />
+
+                <ImageView
+                    android:id="@+id/image_profile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onDirectChildTab(Tab.TAB_PROFILE ,viewpager)}"
+                    android:padding="@dimen/dp_15"
+                    android:src="@drawable/ic_profile"
+                    bind:tabPostion="@{viewModel.tab}"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/bg_circle_shape"
+            android:onClick="@{()->viewModel.onStartScannerQrCode()}"
+            android:padding="@dimen/dp_15"
+            android:src="@drawable/ic_qr_code"
+            />
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

@@ -1,0 +1,15 @@
+machine:
+  ruby:
+      version: 2.0.0-p648
+  java:
+      version: oraclejdk8
+  timezone: Asia/Saigon
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+      JAVA_OPTS: "-Xms512m -Xmx1024m"
+      GRADLE_OPTS: '-Dorg.gradle.parallel=false -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx1560m -XX:+HeapDumpOnOutOfMemoryError"'
+      TERM: dumb
+      REVIEWDOG_VERSION: 0.9.3
+test:
+  override:
+      - sh scripts/saddler.sh
