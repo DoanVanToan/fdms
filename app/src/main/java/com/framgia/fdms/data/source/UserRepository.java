@@ -16,6 +16,12 @@ public class UserRepository {
     private UserRemoteDataSource mUserRemoteDataSource;
     private UserLocalDataSource mUserLocalDataSource;
 
+    public UserRepository(UserRemoteDataSource remoteDataSource,
+            UserLocalDataSource userLocalDataSource) {
+        mUserRemoteDataSource = remoteDataSource;
+        mUserLocalDataSource = userLocalDataSource;
+    }
+
     public UserRepository(UserRemoteDataSource remoteDataSource) {
         mUserRemoteDataSource = remoteDataSource;
     }
@@ -34,5 +40,9 @@ public class UserRepository {
 
     public Observable<User> getCurrentUser() {
         return mUserLocalDataSource.getCurrentUser();
+    }
+
+    public Observable<User> updateProfile(User user) {
+        return mUserRemoteDataSource.updateProfile(user);
     }
 }

@@ -93,4 +93,9 @@ public interface FDMSApi {
 
     @GET("api/v1/device_history/{id}")
     Observable<Respone<List<DeviceHistoryDetail>>> getDeviceDetailHistory(@Path("id") int deviceId);
+
+    @Multipart
+    @PATCH("api/v1/users/{id}")
+    Observable<Respone<User>> updateProfile(@Path("id") int deviceId,
+            @PartMap Map<String, RequestBody> params, @Part MultipartBody.Part avatar);
 }

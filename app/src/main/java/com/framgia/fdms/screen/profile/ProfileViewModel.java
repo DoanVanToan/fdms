@@ -14,6 +14,7 @@ import com.framgia.fdms.data.model.User;
 import com.framgia.fdms.data.source.local.sharepref.SharePreferenceImp;
 import com.framgia.fdms.screen.authenication.login.LoginActivity;
 import com.framgia.fdms.utils.Utils;
+import com.google.gson.Gson;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -67,8 +68,7 @@ public class ProfileViewModel extends BaseObservable
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK) {
             Uri uri = data.getData();
-            mUser.setAvatar(new Picture(Utils.getPathFromUri(mActivity, uri)));
-            notifyChange();
+            if (uri != null) mUser.setAvatar(new Picture(Utils.getPathFromUri(mContext, uri)));
         }
     }
 
@@ -80,7 +80,10 @@ public class ProfileViewModel extends BaseObservable
         DateFormat format = new SimpleDateFormat("dd - MM - yyyy", Locale.getDefault());
         mBirthDay = mUser.getBirthday() == null ? "" : format.format(mUser.getBirthday());
 
+        mPreferences.put(USER_PREFS, new Gson().toJson(user));
         setUser(user);
+        mIsEdit = false;
+        notifyChange();
     }
 
     @Override
@@ -115,7 +118,7 @@ public class ProfileViewModel extends BaseObservable
 
     @Override
     public void onClickDoneEditProfile() {
-        // TODO: 5/30/2017 work call api update profile
+        if (mPresenter != null) mPresenter.updateUser(mUser);
     }
 
     @Override
