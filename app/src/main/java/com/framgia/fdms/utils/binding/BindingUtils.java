@@ -38,6 +38,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -52,6 +53,7 @@ import static com.framgia.fdms.utils.Constant.DeviceStatus.CANCELLED;
 import static com.framgia.fdms.utils.Constant.DeviceStatus.DONE;
 import static com.framgia.fdms.utils.Constant.DeviceStatus.WAITING_APPROVE;
 import static com.framgia.fdms.utils.Constant.DeviceStatus.WAITING_DONE;
+import static com.framgia.fdms.utils.Constant.END_POINT_URL;
 
 /**
  * Created by Age on 4/3/2017.
@@ -63,6 +65,7 @@ public final class BindingUtils {
     private static final int ANIMATE_DURATION = 2000;
     private static final int CIRCLE_ALPHA = 110;
     private static final float DECELERATION_FRICTION_COEF = 0.95f;
+    private static final String URL_ASSETS = "assets";
 
     private BindingUtils() {
         // No-op
@@ -76,14 +79,21 @@ public final class BindingUtils {
 
     @BindingAdapter(value = { "app:imageUrl", "app:error" }, requireAll = false)
     public static void loadImage(ImageView view, String imageUrl, Drawable error) {
+        if (imageUrl == null) return;
         if (error == null) {
             Glide.with(view.getContext())
-                    .load(imageUrl)
-                    .centerCrop()
+                    .load(imageUrl.contains(URL_ASSETS) ? (END_POINT_URL + imageUrl)
+                            : new File(imageUrl))
+                    .asBitmap()
                     .placeholder(R.drawable.ic_no_image)
                     .into(view);
         } else {
-            Glide.with(view.getContext()).load(imageUrl).centerCrop().placeholder(error).into(view);
+            Glide.with(view.getContext())
+                    .load(imageUrl.contains(URL_ASSETS) ? (END_POINT_URL + imageUrl)
+                            : new File(imageUrl))
+                    .asBitmap()
+                    .placeholder(error)
+                    .into(view);
         }
     }
 

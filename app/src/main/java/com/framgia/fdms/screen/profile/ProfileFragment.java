@@ -13,6 +13,7 @@ import com.framgia.fdms.R;
 import com.framgia.fdms.data.source.UserRepository;
 import com.framgia.fdms.data.source.local.UserLocalDataSource;
 import com.framgia.fdms.data.source.local.sharepref.SharePreferenceImp;
+import com.framgia.fdms.data.source.remote.UserRemoteDataSource;
 import com.framgia.fdms.databinding.FragmentProfileBinding;
 
 /**
@@ -33,7 +34,8 @@ public class ProfileFragment extends Fragment {
         mViewModel = new ProfileViewModel((AppCompatActivity) getActivity(), this);
 
         ProfileContract.Presenter presenter = new ProfilePresenter(mViewModel,
-                new UserRepository(new UserLocalDataSource(new SharePreferenceImp(getContext()))));
+                new UserRepository(new UserRemoteDataSource(),
+                        new UserLocalDataSource(new SharePreferenceImp(getContext()))));
         mViewModel.setPresenter(presenter);
     }
 

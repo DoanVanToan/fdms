@@ -23,11 +23,11 @@ final class ProfilePresenter implements ProfileContract.Presenter {
         mViewModel = viewModel;
         mRepository = repository;
         mCompositeSubscription = new CompositeSubscription();
+        getCurrentUser();
     }
 
     @Override
     public void onStart() {
-        getCurrentUser();
     }
 
     @Override
@@ -38,6 +38,25 @@ final class ProfilePresenter implements ProfileContract.Presenter {
     @Override
     public void getCurrentUser() {
         Subscription subscription = mRepository.getCurrentUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<User>() {
+                    @Override
+                    public void call(User user) {
+                        mViewModel.setCurrentUser(user);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        mViewModel.onError(throwable.getMessage());
+                    }
+                });
+        mCompositeSubscription.add(subscription);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        Subscription subscription = mRepository.updateProfile(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<User>() {

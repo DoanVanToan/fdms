@@ -86,6 +86,8 @@ public class User extends BaseObservable {
     @Expose
     @SerializedName("token")
     private String mToken;
+    @SerializedName("chatwork_id")
+    private String mChatWorkId;
 
     public User() {
     }
@@ -318,6 +320,16 @@ public class User extends BaseObservable {
     public void setToken(String token) {
         mToken = token;
         notifyPropertyChanged(BR.token);
+    }
+
+    @Bindable
+    public String getChatWorkId() {
+        return mChatWorkId;
+    }
+
+    public void setChatWorkId(String chatWorkId) {
+        mChatWorkId = chatWorkId;
+        notifyPropertyChanged(BR.chatWorkId);
     }
 
     @StringDef({ STAFF })

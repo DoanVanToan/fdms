@@ -35,5 +35,7 @@ interface ProfileContract {
      */
     interface Presenter extends BasePresenter {
         void getCurrentUser();
+
+        void updateUser(User user);
     }
 }

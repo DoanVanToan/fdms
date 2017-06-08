@@ -155,4 +155,6 @@
 
     <string name="msg_request_read_camera">Please grant permission open camera permission  to scan qr code</string>
     <string name="msg_denied_read_camera">You were denied camera permission</string>
+    <string name="text_first_name">First name</string>
+    <string name="text_last_name">Last name</string>
 </resources>

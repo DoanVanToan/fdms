@@ -19,5 +19,7 @@ public class UserDataSource {
         Observable<Respone<User>> login(String userName, String passWord);
 
         Observable<User> register(RegisterRequest request);
+
+        Observable<User> updateProfile(User user);
     }
 }

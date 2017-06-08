@@ -27,8 +27,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mViewModel = new LoginViewModel(this);
-        UserRepository repository =
-                new UserRepository(new UserRemoteDataSource(FDMSServiceClient.getInstance()));
+        UserRepository repository = new UserRepository(new UserRemoteDataSource());
         LoginContract.Presenter presenter = new LoginPresenter(mViewModel, repository,
                 new SharePreferenceImp(getApplicationContext()));
         mViewModel.setPresenter(presenter);
