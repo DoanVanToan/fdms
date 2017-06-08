@@ -88,7 +88,7 @@ public interface FDMSApi {
 
     @PATCH("/api/v1/requests/{id}")
     @FormUrlEncoded
-    Observable<Respone<List<Request>>> updateActionRequest(@Path("id") int requestId,
+    Observable<Respone<Request>> updateActionRequest(@Path("id") int requestId,
             @Field("request[request_status_id]") int actionId);
 
     @GET("api/v1/device_history/{id}")

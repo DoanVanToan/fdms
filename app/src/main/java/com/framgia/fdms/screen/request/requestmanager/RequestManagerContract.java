@@ -25,6 +25,8 @@ interface RequestManagerContract {
         void getData();
 
         void onActivityResult(int requestCode, int resultCode, Intent data);
+
+        void onGetActionRequestSuccess(Request request);
     }
 
     /**
@@ -36,5 +38,7 @@ interface RequestManagerContract {
         void getStatusDevice();
 
         void getListRelative();
+
+        void updateActionRequest(int requestId, int actionId);
     }
 }

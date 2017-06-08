@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import com.framgia.fdms.BasePresenter;
 import com.framgia.fdms.BaseViewModel;
 import com.framgia.fdms.data.model.Category;
+import com.framgia.fdms.data.model.Request;
 import com.github.clans.fab.FloatingActionMenu;
 import java.util.List;
 
@@ -41,6 +42,6 @@ public interface RequestDetailContract {
     }
 
     interface Presenter extends BasePresenter {
-        void sentAction(int requestId, int actionId);
+        void updateActionRequest(int requestId, int actionId);
     }
 }

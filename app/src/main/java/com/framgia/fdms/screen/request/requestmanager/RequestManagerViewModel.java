@@ -7,6 +7,7 @@ import android.databinding.Bindable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import java.util.List;
 
 import static com.framgia.fdms.utils.Constant.BundleConstant.BUNDLE_STATUE;
 import static com.framgia.fdms.utils.Constant.OUT_OF_INDEX;
+import static com.framgia.fdms.utils.Constant.RequestConstant.REQUEST_DETAIL;
 import static com.framgia.fdms.utils.Constant.RequestConstant.REQUEST_SELECTION;
 import static com.framgia.fdms.utils.Constant.RequestConstant.REQUEST_STATUS;
 
@@ -105,6 +107,12 @@ public class RequestManagerViewModel extends BaseFragmentModel
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_DETAIL) {
+            mAdapter.clear();
+            mPresenter.getData(mRelative, mStatus);
+            return;
+        }
+
         if (data == null || data.getExtras() == null || resultCode != Activity.RESULT_OK) {
             return;
         }
@@ -134,6 +142,12 @@ public class RequestManagerViewModel extends BaseFragmentModel
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onGetActionRequestSuccess(Request request) {
+        if (request == null) return;
+        mAdapter.updateItem(request);
     }
 
     public void onSelectStatusClick() {
@@ -185,7 +199,7 @@ public class RequestManagerViewModel extends BaseFragmentModel
     }
 
     @Override
-    public void onMenuClick(View v, UserRequestAdapter.RequestModel request) {
+    public void onMenuClick(View v, final UserRequestAdapter.RequestModel request) {
         if (request == null
                 || request.getRequest() == null
                 || request.getRequest().getRequestActionList() == null) {
@@ -201,6 +215,8 @@ public class RequestManagerViewModel extends BaseFragmentModel
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             // TODO: 22/05/2017 update request status
+                            ((RequestManagerContract.Presenter) mPresenter).updateActionRequest(
+                                    request.getRequest().getId(), action.getId());
                             return false;
                         }
                     });
@@ -210,6 +226,7 @@ public class RequestManagerViewModel extends BaseFragmentModel
 
     @Override
     public void onDetailRequestClick(Request request) {
-        mContext.startActivity(RequestDetailActivity.newInstance(mContext, request));
+        mFragment.startActivityForResult(RequestDetailActivity.newInstance(mContext, request),
+                REQUEST_DETAIL);
     }
 }

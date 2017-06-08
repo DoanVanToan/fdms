@@ -90,11 +90,12 @@
             <android.support.v7.widget.AppCompatCheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
                 android:buttonTint="@color/color_blue_207"
                 android:checked="@={viewModel.rememberAccount}"
                 android:text="@string/title_remember_me"
                 android:textColor="@color/color_blue_207"
-                android:textSize="@dimen/sp_20"
+                android:textSize="@dimen/sp_15"
                 />
 
             <TextView

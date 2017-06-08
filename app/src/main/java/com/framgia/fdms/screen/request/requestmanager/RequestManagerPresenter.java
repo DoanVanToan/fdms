@@ -9,6 +9,7 @@ import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -40,6 +41,7 @@ final class RequestManagerPresenter implements RequestManagerContract.Presenter 
         mRepository = statusRepository;
         getStatusDevice();
         getListRelative();
+        getRequest(ALL_REQUEST_STATUS_ID, ALL_RELATIVE_ID, mPage, PER_PAGE);
     }
 
     @Override
@@ -62,8 +64,39 @@ final class RequestManagerPresenter implements RequestManagerContract.Presenter 
     }
 
     @Override
+    public void updateActionRequest(int requestId, int actionId) {
+        Subscription subscription = mRequestRepository.updateActionRequest(requestId, actionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        mViewModel.showProgressbar();
+                    }
+                })
+                .subscribe(new Action1<Request>() {
+                    @Override
+                    public void call(Request request) {
+                        mViewModel.onGetActionRequestSuccess(request);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        mViewModel.hideProgressbar();
+                        mViewModel.onLoadError(throwable.getMessage());
+                    }
+                }, new Action0() {
+                    @Override
+                    public void call() {
+                        mViewModel.hideProgressbar();
+                    }
+                });
+
+        mSubscription.add(subscription);
+    }
+
+    @Override
     public void onStart() {
-        getRequest(ALL_REQUEST_STATUS_ID, ALL_RELATIVE_ID, mPage, PER_PAGE);
     }
 
     @Override

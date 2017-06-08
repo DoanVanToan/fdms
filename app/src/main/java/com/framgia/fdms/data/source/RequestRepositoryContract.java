@@ -26,5 +26,5 @@ public interface RequestRepositoryContract {
 
     Observable<List<Request>> getTopRequest(int topRequest);
 
-    Observable<List<Request>> updateAction(int requestId, int statusId);
+    Observable<Request> updateActionRequest(int requestId, int statusId);
 }

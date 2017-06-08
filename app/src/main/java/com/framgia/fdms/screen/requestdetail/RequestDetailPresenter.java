@@ -65,8 +65,8 @@ public class RequestDetailPresenter implements RequestDetailContract.Presenter {
         mSubscription.add(subscription);
     }
 
-    public void sentAction(int requestId, int actionId) {
-        Subscription subscription = mRequestRepository.updateAction(requestId, actionId)
+    public void updateActionRequest(int requestId, int actionId) {
+        Subscription subscription = mRequestRepository.updateActionRequest(requestId, actionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(new Action0() {
@@ -75,7 +75,7 @@ public class RequestDetailPresenter implements RequestDetailContract.Presenter {
                         mViewModel.showProgressbar();
                     }
                 })
-                .subscribe(new Subscriber<List<Request>>() {
+                .subscribe(new Subscriber<Request>() {
                     @Override
                     public void onCompleted() {
                         mViewModel.hideProgressbar();
@@ -84,11 +84,11 @@ public class RequestDetailPresenter implements RequestDetailContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         mViewModel.hideProgressbar();
-                        mViewModel.onLoadError(e.getCause().getMessage());
+                        mViewModel.onLoadError(e.getMessage());
                     }
 
                     @Override
-                    public void onNext(List<Request> requests) {
+                    public void onNext(Request request) {
                         mViewModel.editActionSuccess();
                     }
                 });

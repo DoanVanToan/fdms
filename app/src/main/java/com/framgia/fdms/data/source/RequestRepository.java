@@ -55,7 +55,7 @@ public class RequestRepository implements RequestRepositoryContract {
     }
 
     @Override
-    public Observable<List<Request>> updateAction(int requestId, int statusId) {
-        return mRemoteDataSource.sendAction(requestId, statusId);
+    public Observable<Request> updateActionRequest(int requestId, int statusId) {
+        return mRemoteDataSource.updateActionRequest(requestId, statusId);
     }
 }

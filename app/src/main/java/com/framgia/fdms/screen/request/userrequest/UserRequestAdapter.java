@@ -25,6 +25,7 @@ public class UserRequestAdapter
         extends BaseRecyclerViewAdapter<Request, UserRequestAdapter.ViewHolder> {
     private List<Request> mRequests = new ArrayList<>();
     private OnRequestClickListenner mListenner;
+    private static final int FIRST_ITEM = 0;
 
     public UserRequestAdapter(Context context, List<Request> requests,
             OnRequestClickListenner listenner) {
@@ -38,6 +39,15 @@ public class UserRequestAdapter
         if (datas != null) {
             mRequests.addAll(datas);
             notifyDataSetChanged();
+        }
+    }
+
+    public void updateItem(Request request) {
+        for (int i = 0; i < mRequests.size(); i++) {
+            if (request.getId() == mRequests.get(i).getId()) {
+                mRequests.set(i, request);
+                notifyItemChanged(i);
+            }
         }
     }
 

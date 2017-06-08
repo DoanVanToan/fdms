@@ -1,5 +1,6 @@
 package com.framgia.fdms.screen.requestdetail;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.BaseObservable;
@@ -224,7 +225,8 @@ public class RequestDetailViewModel extends BaseObservable
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mPresenter.sentAction(mRequest.getId(), mListAction.get(mPosition).getId());
+                    mPresenter.updateActionRequest(mRequest.getId(),
+                            mListAction.get(mPosition).getId());
                     menu.hideMenu(true);
                 }
             });
@@ -233,7 +235,7 @@ public class RequestDetailViewModel extends BaseObservable
 
     @Override
     public void editActionSuccess() {
-        mActivity.setResult(RESULT_OK);
+        mActivity.setResult(Activity.RESULT_OK);
         mActivity.finish();
     }
 

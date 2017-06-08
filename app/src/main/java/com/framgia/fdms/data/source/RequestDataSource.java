@@ -27,6 +27,6 @@ public interface RequestDataSource {
 
         Observable<List<Request>> getTopRequest(int topRequest);
 
-        Observable<List<Request>> sendAction(int requestId, int actionId);
+        Observable<Request> updateActionRequest(int requestId, int actionId);
     }
 }
