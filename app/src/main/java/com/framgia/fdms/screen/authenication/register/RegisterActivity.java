@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
         mViewModel = new RegisterViewModel(this);
 
         setTitle(getString(R.string.title_register));
-        UserRepository repository = new UserRepository(new UserRemoteDataSource());
+        UserRepository repository = new UserRepository(new UserRemoteDataSource(this));
         RegisterContract.Presenter presenter = new RegisterPresenter(mViewModel, repository);
         mViewModel.setPresenter(presenter);
         ActivityRegisterBinding binding =

@@ -34,7 +34,7 @@ public class ProfileFragment extends Fragment {
         mViewModel = new ProfileViewModel((AppCompatActivity) getActivity(), this);
 
         ProfileContract.Presenter presenter = new ProfilePresenter(mViewModel,
-                new UserRepository(new UserRemoteDataSource(),
+                new UserRepository(new UserRemoteDataSource(getContext()),
                         new UserLocalDataSource(new SharePreferenceImp(getContext()))));
         mViewModel.setPresenter(presenter);
     }

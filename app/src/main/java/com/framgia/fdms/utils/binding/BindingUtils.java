@@ -65,7 +65,7 @@ public final class BindingUtils {
     private static final int ANIMATE_DURATION = 2000;
     private static final int CIRCLE_ALPHA = 110;
     private static final float DECELERATION_FRICTION_COEF = 0.95f;
-    private static final String URL_ASSETS = "assets";
+    public static final String URL_ASSETS = "assets";
 
     private BindingUtils() {
         // No-op
@@ -82,15 +82,13 @@ public final class BindingUtils {
         if (imageUrl == null) return;
         if (error == null) {
             Glide.with(view.getContext())
-                    .load(imageUrl.contains(URL_ASSETS) ? (END_POINT_URL + imageUrl)
-                            : new File(imageUrl))
+                    .load(imageUrl)
                     .asBitmap()
                     .placeholder(R.drawable.ic_no_image)
                     .into(view);
         } else {
             Glide.with(view.getContext())
-                    .load(imageUrl.contains(URL_ASSETS) ? (END_POINT_URL + imageUrl)
-                            : new File(imageUrl))
+                    .load(imageUrl)
                     .asBitmap()
                     .placeholder(error)
                     .into(view);

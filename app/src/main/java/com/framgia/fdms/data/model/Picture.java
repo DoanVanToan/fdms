@@ -8,6 +8,9 @@ import com.framgia.fdms.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import static com.framgia.fdms.utils.Constant.END_POINT_URL;
+import static com.framgia.fdms.utils.binding.BindingUtils.URL_ASSETS;
+
 /**
  * Created by MyPC on 26/04/2017.
  */
@@ -40,7 +43,7 @@ public class Picture extends BaseObservable implements Parcelable {
 
     @Bindable
     public String getUrl() {
-        return mUrl;
+        return mUrl.contains(URL_ASSETS) ? (END_POINT_URL + mUrl) : mUrl;
     }
 
     public void setUrl(String url) {

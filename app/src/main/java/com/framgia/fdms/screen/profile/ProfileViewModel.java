@@ -68,7 +68,7 @@ public class ProfileViewModel extends BaseObservable
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK) {
             Uri uri = data.getData();
-            if (uri != null) mUser.setAvatar(new Picture(Utils.getPathFromUri(mContext, uri)));
+            if (uri != null) mUser.setAvatar(new Picture(uri.toString()));
         }
     }
 

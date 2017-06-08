@@ -1,13 +1,17 @@
 package com.framgia.fdms.data.source.remote;
 
+import android.content.Context;
+import android.net.Uri;
 import com.framgia.fdms.data.model.Respone;
 import com.framgia.fdms.data.model.User;
 import com.framgia.fdms.data.source.UserDataSource;
 import com.framgia.fdms.data.source.api.request.RegisterRequest;
 import com.framgia.fdms.data.source.api.service.FDMSApi;
 import com.framgia.fdms.data.source.api.service.FDMSServiceClient;
+import com.framgia.fdms.utils.RealPathUtils;
 import com.framgia.fdms.utils.Utils;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.MediaType;
@@ -29,8 +33,10 @@ public class UserRemoteDataSource implements UserDataSource.RemoteDataSource {
     private final String AVATAR = "user[avatar]";
 
     private FDMSApi mFDMSApi;
+    private Context mContext;
 
-    public UserRemoteDataSource() {
+    public UserRemoteDataSource(Context context) {
+        mContext = context;
         mFDMSApi = FDMSServiceClient.getInstance();
     }
 
@@ -62,10 +68,12 @@ public class UserRemoteDataSource implements UserDataSource.RemoteDataSource {
 
         MultipartBody.Part avatar = null;
         if (user.getAvatar() != null && user.getAvatar().getUrl() != null) {
-            File file = new File(user.getAvatar().getUrl());
+            Uri uri = Uri.parse(user.getAvatar().getUrl());
+            File file = new File(RealPathUtils.getFilePath(mContext, uri));
+
             if (file.exists()) {
                 RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-                avatar = MultipartBody.Part.createFormData(AVATAR, file.getName(), requestBody);
+                avatar = MultipartBody.Part.createFormData(AVATAR, "", requestBody);
             }
         }
         return mFDMSApi.updateProfile(user.getId(), params, avatar)

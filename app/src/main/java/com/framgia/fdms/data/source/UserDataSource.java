@@ -3,6 +3,7 @@ package com.framgia.fdms.data.source;
 import com.framgia.fdms.data.model.Respone;
 import com.framgia.fdms.data.model.User;
 import com.framgia.fdms.data.source.api.request.RegisterRequest;
+import java.io.IOException;
 import rx.Observable;
 
 /**
@@ -20,6 +21,6 @@ public class UserDataSource {
 
         Observable<User> register(RegisterRequest request);
 
-        Observable<User> updateProfile(User user);
+        Observable<User> updateProfile(User user) throws IOException;
     }
 }
