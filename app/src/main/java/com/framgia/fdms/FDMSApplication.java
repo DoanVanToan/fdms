@@ -18,7 +18,8 @@ public class FDMSApplication extends Application {
         super.onCreate();
         FDMSServiceClient.initialize(this);
         sInstant = this;
-
+        String a =
+                "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     }
 
     @Override
