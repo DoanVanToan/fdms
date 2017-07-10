@@ -12,7 +12,7 @@ import com.framgia.fdms.data.source.api.service.FDMSServiceClient;
 public class FDMSApplication extends Application {
     private static FDMSApplication sInstant;
     public static Device sUpdatedDevice;
-    // Check ci
+    // Check c
 
     @Override
     public void onCreate() {

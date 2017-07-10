@@ -11,6 +11,11 @@
             name="viewModel"
             type="com.framgia.fdms.screen.selection.StatusSelectionViewModel"
             />
+
+        <variable
+            name=""
+            type="com.framgia.fdms.screen.selection..StatusSelectionViewModel"
+            />
     </data>
 
     <LinearLayout
