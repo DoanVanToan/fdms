@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   ruby:
       version: 2.0.0-p648
   java:
@@ -38,4 +40,3 @@ dependencies:
 test:
   override:
       - sh scripts/saddler.sh
-      - sh scripts/saddler2.sh
