@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.returndevice.ReturnDeviceViewModel"
+            />
+
+    </data>
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                bind:titleToolbar="@{@string/title_device_return}"
+                bind:view="@{viewModel.activity}"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp_16"
+                android:paddingRight="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                >
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    >
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:focusable="false"
+                        android:hint="@string/action_user_return_device"
+                        android:inputType="textAutoComplete|textAutoCorrect"
+                        android:onClick="@{() -> viewModel.onSelectedUserReturn()}"
+                        android:text="@={viewModel.nameUserReturn.name}"
+                        android:textSize="@dimen/sp_17"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_weight="1"
+                    app:layoutManager="LinearLayoutManager"
+                    app:recyclerAdapter="@{viewModel.adapter}"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/dp_16"
+            android:onClick="@{()-> viewModel.onReturnDevice()}"
+            android:src="@drawable/ic_return_device_white_24dp"
+            android:visibility="@{viewModel.devices.size() > 0 ? View.VISIBLE : View.GONE}"
+            />
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

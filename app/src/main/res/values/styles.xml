@@ -4,6 +4,52 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/color_black</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="FloatMenuTitleStyle">
+        <item name="android:background">@drawable/bg_float_menu_title</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="EditTextStyleRequestDetail">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:textColor">@color/color_dark_gray</item>
+    </style>
+
+    <style name="ViewRequestDetail">
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:layout_marginBottom">@dimen/dp_5</item>
+        <item name="android:background">@color/color_gray_mos</item>
+        <item name="android:layout_marginLeft">@dimen/dp_60</item>
+    </style>
+
+    <style name="TextViewRequestDetail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:layout_marginLeft">@dimen/dp_10</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

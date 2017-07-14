@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:car_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.producer.vendor.VendorViewModel"
+            />
+        <variable
+            name="vendor"
+            type="com.framgia.fdms.data.model.Producer"
+            />
+    </data>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_3"
+        android:padding="@dimen/dp_3"
+        car_view:cardCornerRadius="@dimen/dp_1"
+        car_view:cardElevation="@dimen/dp_3"
+        tools:cardCornerRadius="@dimen/dp_3"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:padding="@dimen/dp_10"
+                    android:text='@{vendor.name}'
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:onClick="@{() -> viewModel.onEditProducerClick(vendor)}"
+                    android:padding="@dimen/dp_3"
+                    android:src="@drawable/ic_pencil_edit_button"
+                    android:layout_marginRight="@dimen/dp_7"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:onClick="@{() -> viewModel.onDeleteProducerClick(vendor)}"
+                    android:padding="@dimen/dp_3"
+                    android:src="@drawable/ic_delete"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:maxLines="2"
+                android:text='@{vendor.description}'
+                android:textSize="@dimen/sp_14"
+                android:paddingBottom="@dimen/dp_10"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

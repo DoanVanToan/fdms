@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="com.framgia.fdms.screen.dashboard.DashboardViewModel.Tab"/>
+
+        <import type="android.view.View"/>
+        <import type="com.framgia.fdms.utils.Constant"/>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.dashboard.DashboardViewModel"
+            />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_1"
+                    >
+
+                    <TextView
+                        android:id="@+id/image_request_dashboard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dp_2"
+                        android:background="@drawable/bg_circle_red"
+                        android:onClick="@{()->viewModel.onClickChangeTab(viewpager, Tab.TAB_REQUEST_DASH_BOARD)}"
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/title_request_dashboard"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold"
+                        bind:tabDashBoard="@{viewModel.tab}"
+                        />
+
+                    <TextView
+                        android:id="@+id/image_device_dashboard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_circle_grey"
+                        android:gravity="center_vertical"
+                        android:onClick="@{()->viewModel.onClickChangeTab(viewpager, Tab.TAB_DEVIVE_DASH_BOARD)}"
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/title_device_dashboard"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/sp_12"
+                        android:textStyle="bold"
+                        android:visibility="@{viewModel.boRole ? View.VISIBLE : View.GONE}"
+                        bind:tabDashBoard="@{viewModel.tab}"
+                        />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                bind:adapter="@{viewModel.pagerAdapter}"
+                bind:model="@{viewModel}"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginRight="@dimen/dp_8"
+            >
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:onClick="@{ () -> viewModel.onStartNotificationView()}"
+                android:src="@drawable/ic_notifications_black_24dp"
+                bind:showcaseSequence="@{viewModel.sequence}"
+                bind:contentShowCase="@{@string/show_case_notification_description}"
+                bind:dismissText="@{@string/action_close_show_case}"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/bg_notification_circle_red"
+                android:gravity="center"
+                android:minHeight="@dimen/dp_18"
+                android:minWidth="@dimen/dp_18"
+                android:text="@{viewModel.numberNotification &lt; Constant.MAX_NOTIFICATION ? viewModel.numberNotification + `` : @string/text_number_notification_more}"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/sp_12"
+                android:visibility="@{viewModel.numberNotification > 0 ? View.VISIBLE : View.GONE}"
+                />
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

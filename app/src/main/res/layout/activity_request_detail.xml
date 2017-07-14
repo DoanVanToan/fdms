@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.requestdetail.RequestDetailViewModel"
+            />
+        <import type="android.view.View"/>
+        <import type="com.framgia.fdms.utils.Constant"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_red"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/title_request_detail"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <LinearLayout
+                    android:id="@+id/ontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dp_5"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingLeft="@dimen/dp_5"
+                            android:paddingTop="@dimen/dp_10"
+                            >
+                            <include
+                                layout="@layout/edittext_input"
+                                bind:enabled="@{viewModel.isEdit}"
+                                bind:image="@{@drawable/ic_title}"
+                                bind:text="@={viewModel.request.title}"
+                                bind:title="@{@string/title_title}"
+                                />
+
+                            <include
+                                layout="@layout/edittext_input"
+                                bind:enabled="@{viewModel.isEdit}"
+                                bind:image="@{@drawable/ic_description_24dp}"
+                                bind:text="@={viewModel.request.description}"
+                                bind:title="@{@string/title_description}"
+                                />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@{viewModel.isEdit ? @color/color_blue_grey_50 : @android:color/transparent }"
+                            android:orientation="vertical"
+                            android:paddingLeft="@dimen/dp_5"
+                            >
+                            <include
+                                layout="@layout/text_input"
+                                bind:image="@{@drawable/ic_profile_24dp}"
+                                bind:text="@{viewModel.request.requestFor}"
+                                bind:title="@{@string/title_request_for}"
+                                />
+
+                            <include
+                                layout="@layout/text_input"
+                                bind:image="@{@drawable/ic_profile_24dp}"
+                                bind:text="@{viewModel.request.creater}"
+                                bind:title="@{@string/title_create_by}"
+                                />
+
+                            <include
+                                layout="@layout/text_input"
+                                bind:image="@{@drawable/ic_update_24dp}"
+                                bind:text="@{viewModel.request.updater}"
+                                bind:title="@{@string/title_update_by}"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/dp_8"
+                                >
+
+                                <android.support.v7.widget.AppCompatImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_list_24dp"
+                                    />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="@dimen/dp_16"
+                                    >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        >
+                                        <android.support.v7.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="@dimen/dp_5"
+                                            android:text="@string/title_request_status"
+                                            android:textColor="@color/color_brown"
+                                            android:textSize="@dimen/sp_12"
+                                            />
+
+                                        <android.support.v7.widget.AppCompatTextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/dp_5"
+                                            android:text="@{viewModel.request.requestStatus}"
+                                            android:textSize="@dimen/sp_16"
+                                            bind:deviceStatus="@{viewModel.request.requestStatus}"
+                                            />
+                                    </LinearLayout>
+
+                                    <android.support.design.widget.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        >
+                                        <android.support.v7.widget.AppCompatTextView
+                                            android:id="@+id/appCompatTextView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/dp_1"
+                                            android:layout_marginTop="@dimen/dp_2"
+                                            android:background="@color/color_gray_mos"
+                                            />
+                                    </android.support.design.widget.TextInputLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:gravity="center"
+                        android:onClick="@{() -> viewModel.addAtItem()}"
+                        android:padding="@dimen/dp_5"
+                        android:visibility="@{viewModel.isEdit?View.VISIBLE :View.GONE}"
+                        >
+                        <ImageView
+                            android:layout_width="@dimen/dp_20"
+                            android:layout_height="@dimen/dp_20"
+                            android:layout_marginRight="@dimen/dp_10"
+                            android:background="@drawable/ic_add_24dp"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_add_request_detail"
+                            android:textSize="@dimen/sp_16"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        app:layoutManager="LinearLayoutManager"
+                        app:recyclerAdapter="@{viewModel.adapter}"
+                        app:reverseLayout="true"
+                        />
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_accep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_16"
+                android:clickable="true"
+                android:onClick="@{() -> viewModel.onSubmitEditClick()}"
+                android:src="@drawable/ic_accept"
+                app:backgroundTint="@color/color_green_600"
+                app:fabSize="mini"
+                app:rippleColor="@color/color_green_600"
+                app:visibleAnim="@{viewModel.isEdit}"
+                />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:layout_toLeftOf="@+id/fab_accep"
+                android:clickable="true"
+                android:onClick="@{() -> viewModel.onCancelEditClick()}"
+                android:src="@drawable/ic_cancel"
+                app:backgroundTint="@color/color_red_aceent_700"
+                app:fabSize="mini"
+                app:rippleColor="@color/color_red_500"
+                app:visibleAnim="@{viewModel.isEdit}"
+                />
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/float_action_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:visibility="@{viewModel.actionMenuVisibility}"
+                app:menu_colorNormal="@color/color_red_500"
+                >
+                <com.github.clans.fab.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.initEditRequest()}"
+                    android:src="@drawable/ic_edit_white_24dp"
+                    app:fab_label="@string/action_edit"
+                    app:fab_size="mini"
+                    app:setVisibility="@{viewModel}"
+                    />
+            </com.github.clans.fab.FloatingActionMenu>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="@{viewModel.progressBarVisibility}"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

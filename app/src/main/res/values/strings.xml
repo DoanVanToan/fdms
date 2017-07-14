@@ -1,3 +1,243 @@
 <resources>
     <string name="app_name">FDMS</string>
+    <string name="action_login">Login</string>
+    <string name="title_user_name">User Name</string>
+    <string name="title_password">Password</string>
+    <string name="action_forgot_password">Forgot password?</string>
+    <string name="title_don_t_have_an_account">Don\'t Have an Account?</string>
+    <string name="title_create_account_now">Create Account Now | </string>
+    <string name="title_first_name">First Name</string>
+    <string name="title_last_name">Last Name</string>
+    <string name="title_email">Email</string>
+    <string name="title_confirm_password">Confirm Password</string>
+    <string name="title_adress">Adress</string>
+    <string name="title_role">Role</string>
+    <string name="title_department">Department</string>
+    <string name="action_create_account">create account</string>
+    <string name="action_register">Register</string>
+    <string name="action_sign_up">Sign Up for FDMS</string>
+    <string name="msg_notice_progress">This function is in progress!</string>
+    <string name="title_device_app">Device</string>
+    <string name="menu_search">Search</string>
+    <string name="msg_sort_by_date">Sorted by date</string>
+    <string name="msg_sort_by_category">Sorted by category</string>
+    <string name="msg_sort_by_status">Sorted by status</string>
+    <string name="action_sort_by_date">Sort by Date</string>
+    <string name="action_sort_by_category">Sort by Category</string>
+    <string name="action_sort_by_status">Sort by Status</string>
+    <string name="title_name_device">Name Device: </string>
+    <string name="title_date_device">Date: </string>
+    <string name="title_category">Category: </string>
+    <string name="msg_login_error">Login Error!</string>
+    <string name="msg_login_ok">Login Ok !</string>
+    <string name="msg_please_input_text"><![CDATA[please input username & password]]></string>
+    <string name="title_description">Description</string>
+    <string name="title_related_device">Related device:</string>
+    <string name="title_status_device">Status:</string>
+    <string name="msg_input_text">Please Input Text!</string>
+    <string name="msg_create_account_error">Create Account Error!</string>
+    <string name="msg_error_user_name">Text Must not Empty!</string>
+    <string name="title_edt_name_device">Name Device</string>
+    <string name="title_result">Result:</string>
+    <string name="action_add_new_device">Add New Device</string>
+    <string name="title_type_here">Type here...</string>
+    <string name="title_search">Search</string>
+    <string name="msg_search_error">No data</string>
+    <string name="msg_scan_qrcode">Scan QRCode are is processed!</string>
+    <string name="msg_register_success">Register Device Success !</string>
+    <string name="error_text_email">Please input email</string>
+    <string name="title_input_email">Input Email</string>
+    <string name="action_request">Request</string>
+    <string name="title_forget_the_password">Forget the Password</string>
+    <string name="error_text_format_email">Please input correct the email</string>
+    <string name="title_number_of_devices">Model Number</string>
+    <string name="title_device_name">Device Name</string>
+    <string name="title_descriptions">Description</string>
+    <string name="title_title">Title</string>
+    <string name="title_register_my_device">Register My Device</string>
+    <string name="title_logout">Logout</string>
+    <string name="title_forgot_the_password">Forgot the password</string>
+    <string name="title_register">Register</string>
+    <string name="title_register_device">Register Device</string>
+    <string name="action_qr_code">QR Code</string>
+    <string name="title_asset_font">speedline.ttf</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">notification</string>
+    <string name="title_manage_request">request manager</string>
+    <string name="title_scan">scanner</string>
+    <string name="title_device">Device</string>
+    <string name="title_code">Device Code</string>
+    <string name="msg_create_device_error">Create Device Error</string>
+    <string name="title_device_type">Device Categories</string>
+    <string name="title_device_status">Device Status</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="title_create_device">Create device</string>
+    <string name="title_failure_scanner">No QrCode found, please try again!!!</string>
+    <string name="title_scanning">Scanning</string>
+    <string name="msg_permission_denied">Permission Denied</string>
+    <string name="title_select_file_upload">Select a File to Upload</string>
+    <string name="title_chart">Chart</string>
+    <string name="title_total">Total\n</string>
+    <string name="action_clear">Clear</string>
+    <string name="title_btn_category">Category</string>
+    <string name="title_request_status">Status</string>
+    <string name="title_request_relative">Relative to</string>
+    <string name="title_request_off_your">Request Manager</string>
+    <string name="title_request" formatted="false"><![CDATA[<b><i>%s</i></b> request <b>%s</b> for <b>%s</b>]]></string>
+    <string name="action_filter_status">Request</string>
+    <string name="action_filter_relative">Relative</string>
+    <string name="title_assign_to">Assign to</string>
+    <string name="title_number">Number</string>
+    <string name="title_request_for">Request for</string>
+    <string name="title_create_request">Create Request</string>
+    <string name="title_device_dashboard">Device Overview</string>
+    <string name="title_top_requests">Top Requests</string>
+    <string name="title_top_devices">Top Devices</string>
+    <string name="title_request_dashboard">Request Overview</string>
+    <string name="title_manager_request">Manager Request</string>
+    <string name="title_my_request">My request</string>
+    <string name="title_minus">—</string>
+    <string name="title_plus">+</string>
+    <string name="action_approve">Approve</string>
+    <string name="title_device_history">History</string>
+    <string name="title_using_history">Using History</string>
+    <string name="title_device_infomation">Infomation</string>
+    <string name="title_device_detail">Device Detail</string>
+    <string name="using_device_time" formatted="false">%s - %s</string>
+    <string name="title_device_return">Return device</string>
+    <string name="action_return_device">Return device</string>
+    <string name="text_assign_to">Assign to</string>
+    <string name="text_request_for">Request for</string>
+    <string name="title_two_dot">:</string>
+    <string name="title_original_price">Original Price</string>
+    <string name="title_bought_date">Bought Date</string>
+    <string name="title_printed_code">Printed Code</string>
+    <string name="title_device_category">Device Category</string>
+    <string name="title_unknown">Unknown</string>
+    <string name="text_name_status_selection" formatted="false">%d.    %s</string>
+    <string name="hint_search">Search</string>
+    <string name="missing_data">No data to display</string>
+    <string name="title_create_by">Create by</string>
+    <string name="title_update_by">Update by</string>
+    <string name="title_request_for_request_dt">Request for:</string>
+    <string name="title_request_status_request_dt">Status</string>
+    <string name="title_description_request_dt">Description: %s</string>
+    <string name="title_title_request_dt">Title: %s</string>
+    <string name="title_device_request__name">Name </string>
+    <string name="title_device_number_dt">Number: %d </string>
+    <string name="title_request_detail">Request detail</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_reject">Reject</string>
+    <string name="title_serial_number">Serial Number</string>
+    <string name="msg_update_device_error">Update device error</string>
+    <string name="title_add_request_detail">Add Request Detail</string>
+    <string name="action_agree">AGREE</string>
+    <string name="action_dis_agree">DIS AGREE</string>
+    <string name="msg_request_read_storage_external">Please grant permission Read storage permission  to open gallery</string>
+    <string name="msg_denied_read_storage_permission">You were denied read storage external permission</string>
+    <string name="title_ok">Ok</string>
+    <string name="title_assignt">Assignt</string>
+    <string name="title_available">Available</string>
+    <string name="title_using">\tUsing</string>
+    <string name="text_request_title_notification" formatted="false">Request %s is created</string>
+    <string name="text_from_notification" formatted="false">From %s</string>
+    <string name="text_date_time_notification" formatted="false">At %s</string>
+    <string name="title_notification">Notification</string>
+    <string name="msg_load_data_fails">Load data fails</string>
+    <string name="action_user_return_device">User return device</string>
+    <string name="title_percent">\t%\t</string>
+    <string name="text_number_notification_more">99+</string>
+    <string name="title_empty">""</string>
+    <string name="title_remember_me">Remember Me</string>
+    <string name="msg_not_device_in_device_brorows" formatted="false">This device is on the list of staff %s who is on the staff %s</string>
+    <string name="title_no_history">No history to display</string>
+    <string name="msg_request_read_camera">Please grant permission open camera permission  to scan qr code</string>
+    <string name="msg_denied_read_camera">You were denied camera permission</string>
+    <string name="title_request_assignment">Request</string>
+    <string name="title_staff">Staff</string>
+    <string name="title_add_new_device">Add New Device</string>
+    <string name="title_assignment">Assignment</string>
+    <string name="title_device_id">Device ID</string>
+    <string name="title_add_device">Add Device</string>
+    <string name="title_branch">Branch: </string>
+    <string name="title_type_code">Type of code</string>
+    <string name="title_qrcode">QRCode</string>
+    <string name="title_barcode">BarCode</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_device_code_staff">ID- %d</string>
+    <string name="title_id_card_staff">Card ID- %s</string>
+    <string name="title_export">Export device </string>
+    <string name="title_user">User</string>
+    <string name="title_my_device">My Device</string>
+    <string name="title_manager_device">Manage Device</string>
+    <string name="title_pdf">PDF</string>
+    <string name="title_word">Word</string>
+    <string name="message_export_success">Export Success File in </string>
+    <string name="action_export_file">Export file curent -</string>
+    <string name="title_devices_assignment_report">Devices assignment report</string>
+    <string name="title_full_name">Full Name:</string>
+    <string name="title_employcode">Employee code:</string>
+    <string name="message_export_error">Export error</string>
+    <string name="title_user_not_found">User not found</string>
+    <string name="msg_no_device">Not device</string>
+    <string name="msg_no_request">To create a new request, please click the + button bellow</string>
+    <string name="msg_no_request_manager">Not request device</string>
+    <string name="msg_request_write_file">Write list device using</string>
+    <string name="title_used">Used</string>
+    <string name="title_open_with">Open with</string>
+    <string name="error_device_detail">No detail to show</string>
+    <string name="title_edit_device">Edit device</string>
+    <string name="msg_update_device_success">Device has been updated successfully</string>
+    <string name="error_opps">Opps!</string>
+    <string name="title_no_device">You don\'t have any device!</string>
+    <string name="title_model_number">Model Number</string>
+    <string name="title_assign_date">Assigned date</string>
+    <string-array name="text_table_header">
+        <item>BIEN BAN GIAO THIET BI</item>
+        <item>\u0020Ma So: BM-BOD-07-03\n Lan ban hanh: 01 \n Ngay Phat Hanh: 13/02/2015</item>
+        <item>CONG TY TNHH FRAMGIA VIET NAM</item>
+        <item>ISO/IEC 27001:2015</item>
+    </string-array>
+    <string-array name="text_table_info">
+        <item>Ten nguoi ban giao</item>
+        <item>Phong</item>
+        <item>Ten nguoi nhan ban giao</item>
+        <item>Phong</item>
+        <item>Ghi chu</item>
+        <item>Ngay</item>
+    </string-array>
+    <string-array name="text_table_device">
+        <item>STT</item>
+        <item>Ten thiet bi</item>
+        <item>Ma so</item>
+        <item>Ghi chu</item>
+    </string-array>
+    <string name="title_delivery_device">Phan ban giao thiet bi moi</string>
+    <string name="title_report_pledge">Nguoi nhan ban giao tai san phai chiu trach nhiem kiem tra theo dung yeu cau tren. Neu xay ra bat cu  hong hoc hoac mat mat do loi cua nguoi su dung thi nguoi su dung hoan toan chiu trach nhiem truoc cong ty.</string>
+    <string name="title_deliver">Nguoi ban giao</string>
+    <string name="title_receiver">Nguoi nhan ban giao</string>
+    <string name="title_sign_name">\n(Ky va ghi ro hon ten)</string>
+    <string name="title_vendor">Vendor</string>
+    <string name="title_maker">Maker</string>
+    <string name="title_skip">SKIP</string>
+    <string name="title_intro_title">THIS IS TITLE</string>
+    <string name="title_intro_header">This is header</string>
+    <string name="title_intro_contet">This is contet</string>
+    <string name="title_intro_finish">Finish</string>
+    <string name="title_undo">Undo</string>
+    <string name="title_vendor_delete">Vendor deleted</string>
+    <string name="error_load_makers">Sorry, Not load makers successfully !!!</string>
+    <string name="title_searching">Search...</string>
+    <string name="top_sheet_behavior" translatable="false">com.framgia.fdms.widget.TopSheetBehavior</string>
+    <string name="title_welcome">Welcome</string>
+    <string name="action_close_show_case">GOT IT</string>
+    <string name="show_case_home_description">This screen contains the diagrams of the request and the device</string>
+    <string name="show_case_request_description">This screen contains device requirements</string>
+    <string name="show_case_device_description">This screen contains your devices</string>
+    <string name="show_case_profile_description">This screen contains your information</string>
+    <string name="show_case_qr_code_description">This is the button that you use to view device information via qrcode</string>
+    <string name="show_case_notification_description">This screen contains your notification</string>
+    <string name="show_case_add_request_description">This is the button that you use to request a borrowed device</string>
+    <string name="title_add_producer">Add</string>
 </resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.framgia.fdms.utils.Utils"/>
+        <variable
+            name="notification"
+            type="com.framgia.fdms.data.model.Notification"
+            />
+        <variable
+            name="position"
+            type="int"
+            />
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.notification.NotificationContract.ViewModel"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onClickNotification(notification, position)}"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16"
+        >
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_8"
+            android:text="@{@string/text_request_title_notification(notification.title)}"
+            android:textColor="@color/color_light_blue_800"
+            android:textSize="@dimen/sp_20"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{@string/text_from_notification(notification.userRequest)}"
+                android:textColor="@color/color_grey_757575"
+                android:textSize="@dimen/sp_16"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/text_date_time_notification(Utils.dateToString(notification.dateTime))}"
+                android:textSize="@dimen/sp_13"
+                />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_brown_100"
+            />
+    </LinearLayout>
+</layout>

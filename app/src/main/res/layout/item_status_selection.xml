@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="category"
+            type="com.framgia.fdms.data.model.Category"
+            />
+        <variable
+            name="status"
+            type="com.framgia.fdms.data.model.Status"
+            />
+        <variable
+            name="position"
+            type="int"
+            />
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.selection.StatusSelectionContract.ViewModel"
+            />
+        <variable
+            name="type"
+            type="com.framgia.fdms.screen.selection.StatusSelectionType"
+            />
+        <import type="com.framgia.fdms.screen.selection.StatusSelectionType"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onSelectedItem(category, status, type, position)}"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingRight="@dimen/dp_20"
+        >
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:gravity="center_vertical"
+            android:minHeight="?android:attr/listPreferredItemHeight"
+            android:text="@{type == StatusSelectionType.STATUS ? status.name : category.name}"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/color_brown"
+            android:textSize="@dimen/sp_17"
+            />
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_05"
+            android:background="@color/color_brown_100"
+            />
+    </LinearLayout>
+</layout>

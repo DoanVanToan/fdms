@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.View"/>
+        <import type="com.framgia.fdms.screen.device.DeviceViewModel.Tab"/>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.device.listdevice.ListDeviceViewModel"
+            />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:refreshAble="@{viewModel.refresh}"
+        bind:swipeRefreshListener="@{viewModel.onRefreshListener}"
+        >
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:id="@id/linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_5"
+                    android:visibility="@{viewModel.tab == Tab.TAB_MY_DEVICE ? View.GONE : View.VISIBLE}"
+                    >
+
+                    <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_filter_shape"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_white_24px"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="@{()-> viewModel.onChooseStatus()}"
+                        android:text="@={viewModel.status.name}"
+                        android:textSize="@dimen/sp_13"
+                        />
+
+                    <TextView
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_filter_shape"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_white_24px"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="@{()-> viewModel.onChooseCategory()}"
+                        android:text="@={viewModel.category.name}"
+                        android:textSize="@dimen/sp_13"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <include
+                        layout="@layout/empty_state"
+                        bind:image="@{@drawable/ic_no_report}"
+                        bind:text="@{@string/msg_no_device}"
+                        bind:visibleState="@{viewModel.emptyViewVisible}"
+                        />
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical"
+                        app:layoutManager="LinearLayoutManager"
+                        app:recyclerAdapter="@{viewModel.adapter}"
+                        app:scrollListenner="@{viewModel.scrollListenner}"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/progress_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="@{viewModel.progressBarVisibility}"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/progress_loading_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="@{viewModel.isLoadingMore ? View.VISIBLE : View.GONE}"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
+                android:id="@+id/float_action_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/dp_16"
+                android:visibility="@{viewModel.tab == Tab.TAB_MANAGE_DEVICE ? View.VISIBLE : View.GONE}"
+                app:backgroundTint="@color/colorPrimary"
+                app:fab_addButtonColorNormal="@color/colorPrimary"
+                app:fab_addButtonColorPressed="@color/color_grey_757575"
+                app:fab_addButtonPlusIconColor="@color/color_white"
+                app:fab_labelStyle="@style/FloatMenuTitleStyle"
+                >
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onStartReturnDevice(floatActionMenu)}"
+                    app:fab_colorNormal="@android:color/white"
+                    app:fab_colorPressed="@color/color_seashell"
+                    app:fab_icon="@drawable/ic_return_teal_24px"
+                    app:fab_size="mini"
+                    app:fab_title="@string/action_return_device"
+                    />
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onRegisterDeviceClick(floatActionMenu)}"
+                    app:fab_colorNormal="@android:color/white"
+                    app:fab_colorPressed="@color/color_seashell"
+                    app:fab_icon="@drawable/ic_add_teal_24dp"
+                    app:fab_size="mini"
+                    app:fab_title="@string/action_add_new_device"
+                    />
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        </android.support.design.widget.CoordinatorLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</layout>

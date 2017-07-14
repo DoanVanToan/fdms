@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="viewHolderModel"
+            type="com.framgia.fdms.screen.assignment.AssignmentAdapter.ViewHolderModel"/>
+
+    </data>
+    <android.support.v7.widget.CardView
+        xmlns:car_view="http://schemas.android.com/tools"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_3"
+        android:elevation="@dimen/dp_5"
+        car_view:cardCornerRadius="@dimen/dp_5"
+        car_view:cardElevation="@dimen/dp1"
+        tools:cardCornerRadius="@dimen/dp_5"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_5"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal"
+                    >
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_persion_teal_24dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dp_16"
+                        >
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="@string/title_request_assignment"
+                            android:textColorHint="@color/color_brown"
+                            android:textSize="@dimen/sp_12"
+                            app:hintTextAppearance="@color/color_brown"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal"
+                    >
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_device_24dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dp_16"
+                        >
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="@string/title_btn_category"
+                            android:textColorHint="@color/color_brown"
+                            android:textSize="@dimen/sp_12"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:orientation="horizontal"
+                    >
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="@dimen/dp_20"
+                        android:layout_height="@dimen/dp_20"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_code_24dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/dp_16"
+                        >
+
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="@string/title_device_id"
+                            android:textColorHint="@color/color_brown"
+                            android:textSize="@dimen/sp_12"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
+                android:onClick="@{viewHolderModel.onDelteClick}"
+                android:src="@drawable/ic_delete_15dp"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.tutorial.TutorialViewModel"
+            />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:adapter="@{viewModel.adapter}"
+            bind:linearDot="@{linearDot}"
+            bind:model="@{viewModel}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:onClick="@{() -> viewModel.onSkipClick()}"
+            android:padding="@dimen/dp_20"
+            android:text="@string/title_skip"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_17"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearDot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:gravity="center"
+            android:orientation="horizontal"
+            bind:totalDot="@{viewModel.size}"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{() -> viewModel.onNextClick(viewpager, viewModel.tab)}"
+                android:padding="@dimen/dp_30"
+                android:src="@drawable/ic_arrow_right_24dp"
+                android:visibility="@{viewModel.tab != viewModel.size ? View.VISIBLE : View.GONE}"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{() -> viewModel.onSkipClick()}"
+                android:padding="@dimen/dp_25"
+                android:text="@string/title_intro_finish"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                android:textSize="@dimen/sp_20"
+                android:visibility="@{viewModel.tab == viewModel.size ? View.VISIBLE : View.GONE}"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:onClick="@{() -> viewModel.onPreviousClick(viewpager, viewModel.tab)}"
+                android:padding="@dimen/dp_30"
+                android:rotation="180"
+                android:src="@drawable/ic_arrow_right_24dp"
+                android:visibility="@{viewModel.tab != 0 ? View.VISIBLE : View.GONE}"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

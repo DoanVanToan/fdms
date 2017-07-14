@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.producer.vendor.VendorViewModel"
+        />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/floating_search_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            app:floatingSearch_leftActionMode="showHamburger"
+            app:floatingSearch_menu="@menu/menu_search"
+            app:floatingSearch_searchHint="@string/title_searching"
+            app:floatingSearch_showSearchKey="true"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hideButton="@{fabAdd}"
+                app:layoutManager="LinearLayoutManager"
+                app:recyclerAdapter="@{viewModel.adapter}"
+                app:scrollPosition="@{viewModel.positionScroll}"
+            />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/dp_16"
+                android:onClick="@{() -> viewModel.onAddProducerClick()}"
+                android:src="@drawable/fab_add"
+                app:backgroundTint="@color/colorPrimary"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

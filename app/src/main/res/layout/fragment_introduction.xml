@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.tutorial.introduction.IntroductionViewModel"
+            />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@{viewModel.introduction.color}"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_50"
+            android:text="@{viewModel.introduction.title}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_200"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_30"
+            android:src="@{viewModel.introduction.image}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@{viewModel.introduction.header}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="@{viewModel.introduction.content}"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="italic"
+            />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <import type="com.framgia.fdms.screen.devicecreation.DeviceStatusType"/>
+        <variable
+            name="title"
+            type="String"
+            />
+        <variable
+            name="text"
+            type="String"
+            />
+        <variable
+            name="error"
+            type="String"
+            />
+        <variable
+            name="image"
+            type="android.graphics.drawable.Drawable"
+            />
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener"
+            />
+        <variable
+            name="type"
+            type="com.framgia.fdms.screen.devicecreation.DeviceStatusType"
+            />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@{type == DeviceStatusType.EDIT ?@color/color_blue_grey_50 : @android:color/transparent }"
+        android:onClick="@{onClick}"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8"
+        >
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@{image}"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_16"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_5"
+                    android:text="@{title}"
+                    android:textColor="@color/color_brown"
+                    android:textSize="@dimen/sp_12"
+                    />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@{text}"
+                    android:textSize="@dimen/sp_16"
+                    />
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:errorText="@{error}"
+                >
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:background="@color/color_gray_mos"
+                    />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

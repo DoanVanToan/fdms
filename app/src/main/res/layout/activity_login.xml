@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.authenication.login.LoginViewModel"
+            />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".screen.authenication.login.LoginActivity"
+        >
+
+        <ImageView
+            android:id="@+id/image_slogan"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_77"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_30"
+            android:background="@drawable/ic_logo_framgia"
+            android:scaleType="fitXY"
+            />
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/dp_20"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_10"
+            android:weightSum="1"
+            >
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textColorHighlight="#ff0000"
+                android:textColorHint="@color/color_gray_"
+                android:transitionName="@string/title_user_name"
+                bind:errorText="@{viewModel.usernameError}"
+                >
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/text_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_gray_"
+                    android:hint="@string/title_user_name"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="@={viewModel.username}"
+                    android:textColor="@color/color_black"
+                    android:textColorHint="@color/color_gray_"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textColorHint="@color/color_gray_"
+                android:transitionName="@string/title_password"
+                bind:errorText="@{viewModel.passwordError}"
+                >
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_gray_"
+                    android:hint="@string/title_password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:text="@={viewModel.password}"
+                    android:textColor="@color/color_black"
+                    android:textColorHint="@color/color_gray_"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:buttonTint="@color/color_blue_207"
+                android:checked="@={viewModel.rememberAccount}"
+                android:text="@string/title_remember_me"
+                android:textColor="@color/color_blue_207"
+                android:textSize="@dimen/sp_15"
+                />
+
+            <TextView
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/boder_title"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="@{()-> viewModel.onLoginClick()}"
+                android:padding="@dimen/dp_10"
+                android:text="@string/action_login"
+                android:textAllCaps="true"
+                android:textColor="@color/color_white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/text_button_forgot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="@{()-> viewModel.onForgotPasswordClick()}"
+                android:paddingTop="@dimen/dp_5"
+                android:text="@string/action_forgot_password"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic|bold"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/dp_20"
+            >
+            <ProgressBar
+                android:id="@+id/progress_load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="@{viewModel.progressBarVisibility}"
+                />
+            <TextView
+                android:id="@+id/button_create_account_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:background="@drawable/bordel_text"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:onClick="@{()-> viewModel.onSignUpClick()}"
+                android:padding="@dimen/dp_10"
+                android:text="@string/action_sign_up"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

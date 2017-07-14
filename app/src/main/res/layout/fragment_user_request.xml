@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.framgia.fdms.screen.request.userrequest.UserRequestViewModel"
+            />
+        <import type="com.framgia.fdms.utils.Constant"/>
+        <import type="android.view.View"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:refreshAble="@{viewModel.isRefresh}"
+            app:swipeRefreshListener="@{viewModel.refreshLayout}"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_filter_shape"
+                        android:drawableLeft="@drawable/ic_arrow_drop_down_white_24px"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="@{() -> viewModel.onSelectStatusClick()}"
+                        android:text="@={viewModel.status.name}"
+                        android:textSize="@dimen/sp_13"
+                        />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:layout_marginRight="@dimen/dp_5"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_filter_shape"
+                        android:drawableLeft="@drawable/ic_arrow_drop_down_white_24px"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="@{() -> viewModel.onSelectRelativeClick()}"
+                        android:text="@={viewModel.relative.name}"
+                        android:textSize="@dimen/sp_13"
+                        android:visibility="@{viewModel.user.role.equals(Constant.Role.STAFF) ? View.GONE : View.VISIBLE}"
+                        />
+                </LinearLayout>
+
+                <include
+                    layout="@layout/empty_state"
+                    bind:image="@{@drawable/ic_no_report}"
+                    bind:text="@{@string/msg_no_request}"
+                    bind:visibleState="@{viewModel.emptyViewVisible}"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_weight="1"
+                    app:layoutManager="LinearLayoutManager"
+                    app:recyclerAdapter="@{viewModel.adapter}"
+                    app:scrollListenner="@{viewModel.scrollListenner}"
+                    />
+            </LinearLayout>
+            <ProgressBar
+                android:id="@+id/progress_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:visibility="@{viewModel.progressBarVisibility}"
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </RelativeLayout>
+</layout>
